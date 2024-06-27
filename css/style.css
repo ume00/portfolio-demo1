@@ -13,19 +13,17 @@
 }
 
 html{
-    font-family: 'Salsa', 'Klee One', cursive;
-    font-size: 16px;
-    font-weight: 400;
-    font-style: normal;
-    color: var(--color-darkbrown);
-    line-height: var(--line-height-default);
-    letter-spacing: var(--letter-spacing-default);
-}
-
-@media (width < 768px) {
-  html {
+  font-family: 'Salsa', 'Klee One', cursive;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-darkbrown);
+  line-height: var(--line-height-default);
+  letter-spacing: var(--letter-spacing-default);
+  
+  @media (width < 768px) {
     font-size: 14px;
-  }  
+  }
 }
 
 h1,
@@ -49,29 +47,25 @@ li{
     list-style: none;
 }
 
-#multiscroll-nav {
-  &.right{
-    right: 12px;
+.pc {
+  display: block;
+
+  @media (width < 768px) {
+    display: none;
   }
+}
 
-  li {
-    width: 12px;
-    height: 12px;
-    margin: 12px;
+.sp {
+  display: none;
 
-    span {
-      top: 0;
-      left: 0;
-      width: 12px;
-      height: 12px;
-      border: 1px solid var(--color-white);
-    }
+  @media (width < 768px) {
+    display: block;
+  }
+}
 
-    .active {
-      span {
-        background-color: var(--color-white);
-      }
-    }
+.ms-tableCell {
+  @media (width < 768px) {
+    vertical-align: top;
   }
 }
 
@@ -122,11 +116,27 @@ li{
   transform: translate(-50%, -50%);
 }
 
+.ms-section:not(.fv) {
+  .top-text-wrapper {
+    @media (width < 768px) {
+      top: 75%;
+    }
+  }
+}
+
 .top-logo {
   margin-bottom: 64px;
 
+  @media (width < 768px) {
+    margin-bottom: 40px;
+  }
+
   img {
     width: 320px;
+
+    @media (width < 768px) {
+      width: 280px;
+    }
   }
 }
 
@@ -161,6 +171,12 @@ li{
       transform:scale(1, 1);
     }
   }
+
+  @media (width < 768px) {
+    width: 280px;
+    height: 56px;
+    font-size: 16px;
+  }
 }
 
 .top-button-frame-resv {
@@ -192,9 +208,21 @@ li{
   font-size: 2.5rem;
   color: var(--color-white);
   text-align: center;
+
+  @media (width < 768px) {
+    font-size: 32px;
+  }  
 }
 
 .ms-left {
+  @media (width < 768px) {
+    width: 100%!important;
+  }
+
+  .top-sp-img {
+    height: 50%;
+  }
+
   .ms-section.contact {
     background-position: left;
     background-size: 200% 100%;
@@ -212,57 +240,55 @@ li{
   }
 }
 
-.ms-right {
-  .ms-section:not(.fv) {
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+.ms-left .top-sp-img,
+.ms-right .ms-section:not(.fv) {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+.ms-right .ms-section.stadio,
+.ms-left .stadio .top-sp-img {
+  background-image: url('../img/yogastudio.jpg');
+  @supports (background-image: url('../img/yogastudio.webp')) {
+    background-image: url('../img/yogastudio.webp');
   }
+}
 
-  .ms-section {
-    &.stadio {
-      background-image: url('../img/yogastudio.jpg');
+.ms-right .ms-section.price,
+.ms-left .price .top-sp-img {
+  background-image: url('../img/yogamat_multi.jpg');
+  background-position: 38% 50%;
+  @supports (background-image: url('../img/yogamat_multi.webp')) {
+    background-image: url('../img/yogamat_multi.webp');
+  }
+}
 
-      @supports (background-image: url('../img/yogastudio.webp')) {
-        background-image: url('../img/yogastudio.webp');
-      }
-    }
+.ms-right .ms-section.instructor,
+.ms-left .instructor .top-sp-img {
+  background-image: url('../img/yogainstructor_bw.jpg');
+  @supports (background-image: url('../img/yogainstructor_bw.webp')) {
+    background-image: url('../img/yogainstructor_bw.webp');
+  }
+}
 
-    &.price {
-      background-image: url('../img/yogamat_multi.jpg');
-      background-position: 38% 50%;
+.ms-right .ms-section.class,
+.ms-left .class .top-sp-img {
+  background-image: url('../img/lesson.jpg');
+  background-position: 66% 50%;
+  @supports (background-image: url('../img/lesson.webp')) {
+    background-image: url('../img/lesson.webp');
+  }
+}
 
-      @supports (background-image: url('../img/yogamat_multi.webp')) {
-        background-image: url('../img/yogamat_multi.webp');
-      }
-    }
-
-    &.instructor {
-      background-image: url('../img/yogainstructor_bw.jpg');
-
-      @supports (background-image: url('../img/yogainstructor_bw.webp')) {
-        background-image: url('../img/yogainstructor_bw.webp');
-      }
-    }
-
-    &.class {
-      background-image: url('../img/lesson.jpg');
-      background-position: 66% 50%;
-
-      @supports (background-image: url('../img/lesson.webp')) {
-        background-image: url('../img/lesson.webp');
-      }
-    }
-
-    &.contact {
-      background-image: url('../img/yogamat_single.jpg');
-      background-position: right;
-      background-size: 200% 100%;
-
-      @supports (background-image: url('../img/yogamat_single.webp')) {
-        background-image: url('../img/yogamat_single.webp');
-      }
-    }
+.ms-right .ms-section.contact,
+.ms-left .contact .top-sp-img {
+  background-image: url('../img/yogamat_single.jpg');
+  background-position: right;
+  background-size: 200% 100%;
+  @supports (background-image: url('../img/yogamat_single.webp')) {
+    background-image: url('../img/yogamat_single.webp');
   }
 }
 
@@ -319,4 +345,34 @@ li{
  p {
   font-family: 'Klee One';
  }
+}
+
+#multiscroll-nav {
+  &.right{
+    right: 12px;
+
+    @media (width < 768px) {
+      right: 0;
+    }
+  }
+
+  li {
+    width: 12px;
+    height: 12px;
+    margin: 12px;
+
+    span {
+      top: 0;
+      left: 0;
+      width: 12px;
+      height: 12px;
+      border: 1px solid var(--color-white);
+    }
+
+    .active {
+      span {
+        background-color: var(--color-white);
+      }
+    }
+  }
 }
