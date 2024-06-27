@@ -1,0 +1,322 @@
+@charset "UTF-8";
+
+:root {
+  --color-white: #FFFCFC;
+  --color-gray: #A19B9B;
+  --color-green: #749880;
+  --color-brown: #926E56;
+  --color-darkbrown: #36312F;
+  --color-yellow: #D0BF88;
+  --color-pink: #D47789;
+  --line-height-default: 1.5;
+  --letter-spacing-default: 0.05em;
+}
+
+html{
+    font-family: 'Salsa', 'Klee One', cursive;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--color-darkbrown);
+    line-height: var(--line-height-default);
+    letter-spacing: var(--letter-spacing-default);
+}
+
+@media (width < 768px) {
+  html {
+    font-size: 14px;
+  }  
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p,
+span {
+  line-height: var(--line-height-default);
+  letter-spacing: var(--letter-spacing-default);
+}
+
+img{
+    max-width: 100%;
+}
+
+li{
+    list-style: none;
+}
+
+#multiscroll-nav {
+  &.right{
+    right: 12px;
+  }
+
+  li {
+    width: 12px;
+    height: 12px;
+    margin: 12px;
+
+    span {
+      top: 0;
+      left: 0;
+      width: 12px;
+      height: 12px;
+      border: 1px solid var(--color-white);
+    }
+
+    .active {
+      span {
+        background-color: var(--color-white);
+      }
+    }
+  }
+}
+
+.fv {
+  position: relative;
+  overflow: hidden;
+
+  .ms-tableCell{
+    position: absolute;
+    top: 0;
+    
+    video {
+      position: absolute;
+      top: 0;
+      width: 100vw;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+
+.ms-left .fv {
+  .ms-tableCell {
+    left: 0;
+
+    video {
+      left: 0;
+    }
+  }
+}
+
+.ms-right .fv {
+  .ms-tableCell {
+    right: 0;
+
+    video {
+      right: 0;
+    }
+  }
+}
+
+
+.top-text-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.top-logo {
+  margin-bottom: 64px;
+
+  img {
+    width: 320px;
+  }
+}
+
+.top-button-frame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 320px;
+  height: 64px;
+  border: 1px solid var(--color-darkbrown);
+  font-size: 1.25rem;
+  font-weight: 600;
+  transition: ease .2s;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left:  0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-white);
+    transition: transform .6s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+    transform-origin:right top;
+    transform:scale(0, 1);
+  }
+
+  &:hover {
+    &::before {
+      transform-origin:left top;
+      transform:scale(1, 1);
+    }
+  }
+}
+
+.top-button-frame-resv {
+  border: 1px solid var(--color-white);
+
+  &::before {
+    background-color: var(--color-darkbrown);
+  }
+
+  p {
+    color: var(--color-white);
+  }
+}
+
+.top-button-text {
+  z-index: 1;
+}
+
+.bg-brown {
+  background-color: var(--color-brown);
+}
+
+.bg-green {
+  background-color: var(--color-green);
+}
+
+.top-section-title {
+  margin-bottom: 32px;
+  font-size: 2.5rem;
+  color: var(--color-white);
+  text-align: center;
+}
+
+.ms-left {
+  .ms-section.contact {
+    background-position: left;
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+  }
+
+  .contact {
+    background-image: url('../img/yogamat_single.jpg');
+  }
+
+  @supports (background-image: url('../img/yogamat_single.webp')) {
+    .contact {
+      background-image: url('../img/yogamat_single.webp');
+    }
+  }
+}
+
+.ms-right {
+  .ms-section:not(.fv) {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .ms-section {
+    &.stadio {
+      background-image: url('../img/yogastudio.jpg');
+
+      @supports (background-image: url('../img/yogastudio.webp')) {
+        background-image: url('../img/yogastudio.webp');
+      }
+    }
+
+    &.price {
+      background-image: url('../img/yogamat_multi.jpg');
+      background-position: 38% 50%;
+
+      @supports (background-image: url('../img/yogamat_multi.webp')) {
+        background-image: url('../img/yogamat_multi.webp');
+      }
+    }
+
+    &.instructor {
+      background-image: url('../img/yogainstructor_bw.jpg');
+
+      @supports (background-image: url('../img/yogainstructor_bw.webp')) {
+        background-image: url('../img/yogainstructor_bw.webp');
+      }
+    }
+
+    &.class {
+      background-image: url('../img/lesson.jpg');
+      background-position: 66% 50%;
+
+      @supports (background-image: url('../img/lesson.webp')) {
+        background-image: url('../img/lesson.webp');
+      }
+    }
+
+    &.contact {
+      background-image: url('../img/yogamat_single.jpg');
+      background-position: right;
+      background-size: 200% 100%;
+
+      @supports (background-image: url('../img/yogamat_single.webp')) {
+        background-image: url('../img/yogamat_single.webp');
+      }
+    }
+  }
+}
+
+.scrolldown {
+  position: absolute;
+  right: 24px;
+  bottom:16px;
+  height: calc(2rem + 32px);
+
+  span {
+    color: var(--color-white);
+  }
+
+  &::after {
+    content: "";
+	  position: absolute;
+	  top: 2rem;
+    left: 50%;
+	  width: 1px;
+	  height: 32px;
+  	background-color: var(--color-white);
+    transform: translate(-50%);
+	  animation: downanim 1.6s ease-in-out infinite;
+  }
+}
+
+@keyframes downanim{
+	0%{
+		height:0;
+		opacity: 0;
+	}
+	
+  30%{
+		height:32px;
+		opacity: 1;
+	}
+	
+  100%{
+		height:0;
+		top:calc(2rem + 32px);
+		opacity: 0;
+	}
+}
+
+.contact {
+  .top-logo {
+    margin-bottom: 24px;
+  }
+}
+
+.address-content {
+  margin-bottom: 40px;
+
+ p {
+  font-family: 'Klee One';
+ }
+}
