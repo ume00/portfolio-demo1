@@ -227,6 +227,10 @@ li{
     background-position: left;
     background-size: 200% 100%;
     background-repeat: no-repeat;
+    
+    @media (width < 768px) {
+      background-size: 150% 100%;
+    }
   }
 
   .contact {
