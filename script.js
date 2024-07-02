@@ -1,10 +1,12 @@
-$('.ms-container').multiscroll({
+if ($('body').hasClass('top-page')) {
+  $('.ms-container').multiscroll({
     anchors: ['top', '', '','','',''],
-	loopTop: false,
-	loopBottom: true,
+	  loopTop: false,
+	  loopBottom: true,
     navigation: true,
     navigationPosition: 'right',
-});
+  });
+}
 
 $(function() {
     var $viewport = $('meta[name="viewport"]');
