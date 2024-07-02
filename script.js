@@ -1,4 +1,4 @@
-if ($('body').hasClass('top-page')) {
+if ($('body').hasClass('top')) {
   $('.ms-container').multiscroll({
     anchors: ['top', '', '','','',''],
 	  loopTop: false,
