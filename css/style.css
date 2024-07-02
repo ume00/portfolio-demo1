@@ -1,12 +1,13 @@
 @charset "UTF-8";
 
 :root {
-  --color-white: #FFFCFC;
+  --color-white: #FFFDFA;
   --color-gray: #A19B9B;
   --color-green: #749880;
   --color-brown: #926E56;
   --color-darkbrown: #36312F;
   --color-yellow: #D0BF88;
+  --color-yellow-50: rgba(208, 191, 136, 0.5);
   --color-pink: #D47789;
   --line-height-default: 1.5;
   --letter-spacing-default: 0.05em;
@@ -61,6 +62,22 @@ li{
   @media (width < 768px) {
     display: block;
   }
+}
+
+.bg-brown {
+  background-color: var(--color-brown);
+}
+
+.bg-green {
+  background-color: var(--color-green);
+}
+
+.bg-white {
+  background-color: var(--color-white);
+}
+
+.ms-right {
+  right: 0!important;
 }
 
 .ms-tableCell {
@@ -195,14 +212,6 @@ li{
 
 .top-button-text {
   z-index: 1;
-}
-
-.bg-brown {
-  background-color: var(--color-brown);
-}
-
-.bg-green {
-  background-color: var(--color-green);
 }
 
 .top-section-title {
@@ -382,3 +391,83 @@ li{
     }
   }
 }
+
+.page-header {
+  position: fixed;
+  width: calc(100% - 16px);
+  height: 80px;
+  margin: 8px 8px 0 8px;
+  padding: 0 32px;
+  border-radius: 16px;
+  background-color: var(--color-yellow-50);
+  backdrop-filter: blur(4px);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.page-header-logo {
+  display: inline-block;
+  width: 120px;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-item {
+  &.current {
+    opacity: 0.6;
+  }
+
+  a{
+    position: relative;
+    &:hover {
+      .nav-text {
+        opacity: 0;
+      }
+
+      .nav-text-hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.nav-text {
+  transition: opacity .6s;
+}
+
+.nav-text-hover {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%);
+  transition: opacity .6s;
+}
+
+.nav-item-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 48px;
+  border: 1px solid var(--color-darkbrown);
+  border-radius: 25px;
+  transition: color .6s ease-in, border-width .6s;
+
+  &:hover {
+    color: var(--color-white);
+    border-width: 24px;
+  }
+}
+
+
