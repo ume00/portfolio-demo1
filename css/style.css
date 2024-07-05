@@ -89,6 +89,32 @@ body:not(.top) {
   font-weight: 600;
 }
 
+.c-round-button-frame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 48px;
+  border: 1px solid var(--color-darkbrown);
+  border-radius: 25px;
+  transition: color .4s ease-in, border-width .4s;
+
+  &:hover {
+    color: var(--color-white);
+    border-width: 24px;
+  }
+}
+
+.c-round-button-frame-resv {
+  color: var(--color-white);
+  border: 1px solid var(--color-white);
+
+  &:hover {
+    color: var(--color-darkbrown);
+  }
+}
+
 .ms-right {
   right: 0 !important;
 }
@@ -374,7 +400,7 @@ body:not(.top) {
 
 .top-address-content {
   margin-bottom: 40px;
-    font-family: 'Klee One';
+  font-family: 'Klee One';
 }
 
 #multiscroll-nav {
@@ -471,25 +497,8 @@ nav {
   transition: opacity .4s;
 }
 
-.nav-item-button {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 160px;
-  height: 48px;
-  border: 1px solid var(--color-darkbrown);
-  border-radius: 25px;
-  transition: color .4s ease-in, border-width .4s;
-
-  &:hover {
-    color: var(--color-white);
-    border-width: 24px;
-  }
-}
-
 .trial {
-  padding-block: 64px;
+  padding: 64px 0 80px;
   text-align: center;
 }
 
@@ -807,3 +816,40 @@ nav {
 .trial-info-dtl-note {
   margin-top: 1em;
 }
+
+footer {
+  padding-block: 40px;
+  color: var(--color-white);
+  text-align: center;
+}
+
+.footer-main-title {
+  margin-bottom: 16px;
+}
+
+.footer-price-title {
+  margin-top: 40px;
+}
+
+.footer-price-text-left {
+  padding-right: 0.5em;
+}
+
+.footer-price-text-num {
+  font-size: 32px;
+}
+
+footer .c-round-button-frame {
+  margin: 24px auto 0;
+}
+
+.footer-logo {
+  display: inline-block;
+  width: 160px;
+  margin: 40px 0 16px;
+}
+
+.footer-address-content {
+  font-family: 'Klee One', cursive;
+}
+ 
