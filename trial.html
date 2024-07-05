@@ -7,12 +7,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Salsa&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Klee+One:wght@400;600&family=Salsa&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/multiscroll.js/0.2.2/jquery.multiscroll.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="./css/style.css">
 </head>
-<body class="trial bg-white">
+<body class="p-trial bg-white">
 <!-- header -->
 <header class="page-header">
   <nav>
@@ -35,13 +34,28 @@
 
 <!-- main -->
 <main>
-<article>
-<h1>タイトル</h1>
-<section>
-<h2>見出し２</h2>
-<p>コンテンツの内容</p>
+<section class="trial">
+  <h1 class="trial-title-en">TRIAL</h1>
+  <h2 class="trial-title-jp">はじめての方へ</h2>
+  <img class="trial-fstprice-img" src="./img/trial_fstprice.svg" alt="体験レッスン初回限定1,500円(税込)">
+  <a class="trial-ticket-wrapper" href="/">
+    <p class="ticket-click-text">＼ PLEASE CLICK HERE ／</p>
+    <div class="trial-ticket">
+      <div class="ticket-left">
+        <p class="ticket-left-text-sub">今すぐ</p>
+        <p class="ticket-left-text-main">体験予約する</p>
+        <div class="ticket-barcode"></div>
+      </div>
+      <div class="ticket-arrow"></div>
+      <div class="ticket-right">
+        <span class="ticket-right-text">ENTRY</span>
+      </div>
+    </div>
+    <p class="ticket-text-note">※予約には会員登録(無料)が必要です</p>
+  </a>
+  
+
 </section>
-</article>
 </main>
 <!-- /main -->
 
@@ -51,7 +65,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/multiscroll.js/0.2.2/jquery.multiscroll.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="script.js"></script>
 </body>
 </html>

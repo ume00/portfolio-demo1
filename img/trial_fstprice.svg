@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="446" height="150" viewBox="0 0 446 150">
+  <g id="trial_price" transform="translate(-519 -289)">
+    <text id="体験レッスン" transform="translate(642 326)" fill="#36312f" font-size="32" font-family="KleeOne-SemiBold, Klee One" font-weight="600" letter-spacing="0.05em"><tspan x="0" y="0">体験</tspan><tspan y="0">レッスン</tspan></text>
+    <text id="初回_限定" data-name="初回
+限定" transform="translate(519 374)" fill="#749880" font-size="32" font-family="NotoSansJP-Bold, Noto Sans JP" font-weight="700" letter-spacing="0.05em"><tspan x="0" y="0">初回</tspan><tspan x="0" y="38.4">限定</tspan></text>
+    <text id="_1_500" data-name="1,500" transform="translate(593 414)" fill="#749880" font-size="88" font-family="NotoSansJP-ExtraBold, Noto Sans JP" font-weight="800" letter-spacing="0.044em"><tspan x="0" y="0">1,</tspan><tspan y="0">500</tspan></text>
+    <text id="円" transform="translate(849 409)" fill="#749880" font-size="40" font-family="NotoSansJP-Bold, Noto Sans JP" font-weight="700" letter-spacing="0.05em"><tspan x="0" y="0">円</tspan></text>
+    <text id="_税込_" data-name="(税込)" transform="translate(897 407)" fill="#749880" font-size="24" font-family="NotoSansJP-Regular, Noto Sans JP" letter-spacing="0.05em"><tspan x="0" y="0">(税込)</tspan></text>
+  </g>
+</svg>
