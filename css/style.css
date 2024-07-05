@@ -372,12 +372,9 @@ body:not(.top) {
   }
 }
 
-.address-content {
+.top-address-content {
   margin-bottom: 40px;
-
-  p {
     font-family: 'Klee One';
-  }
 }
 
 #multiscroll-nav {
@@ -410,7 +407,7 @@ body:not(.top) {
   }
 }
 
-.c-header {
+header {
   position: fixed;
   width: calc(100% - 16px);
   height: 80px;
@@ -430,7 +427,7 @@ nav {
   height: 100%;
 }
 
-.c-header-logo {
+.header-logo {
   display: inline-block;
   width: 120px;
 }
