@@ -27,7 +27,7 @@ $(function() {
 
   /* page-common_current */
   $(".nav-item a").each(function(){
-    if(this.href == location.href) {
+    if(this.href == location.href　|| this.href + '#' == location.href) {
       $(this).parents(".nav-item").addClass("current");
     }
   });
