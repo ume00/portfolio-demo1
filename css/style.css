@@ -95,6 +95,7 @@ body:not(.top) {
   align-items: center;
   justify-content: center;
   width: 160px;
+  min-width: 160px;
   height: 48px;
   border: 1px solid var(--color-darkbrown);
   border-radius: 25px;
