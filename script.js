@@ -26,9 +26,23 @@ $(function() {
   switchViewport();
 
   /* page-common_current */
-  $(".nav-item a").each(function(){
+  $('.nav-item a').each(function(){
     if(this.href == location.href　|| this.href + '#' == location.href) {
-      $(this).parents(".nav-item").addClass("current");
+      $(this).parents('.nav-item').addClass('current');
+    }
+  });
+
+  /* nav */
+  $('.nav-icon').click(function(){
+      $('.nav-icon').toggleClass('active');
+      $('.nav-bg').toggleClass('active');
+  });
+
+  /* nav window resize */
+  $(window).resize(function() {
+    if ($(window).width() >= 1024) {
+      $('.nav-icon').removeClass('active');
+      $('.nav-bg').removeClass('active');
     }
   });
 });
