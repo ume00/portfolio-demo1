@@ -112,10 +112,19 @@ body:not(.top) {
   &:hover {
     color: var(--color-white);
     border-width: 24px;
+
+    @media (width < 768px) {
+      border-width: 22px;
+    }
   }
 
   @media (width < 1023px) {
     min-width: 0;
+  }
+
+  @media (width < 768px) {
+    width: 144px;
+    height: 44px;
   }
 }
 
@@ -610,11 +619,26 @@ header {
 .trial {
   padding: 64px 0 80px;
   text-align: center;
+
+  @media (width < 768px) {
+    padding-top: 40px;
+  }
 }
 
 .trial-fst-text {
   margin-top: 8px;
   margin-bottom: 56px;
+  @media (width < 768px) {
+    margin-bottom: 32px;
+  }
+}
+
+.trial-fstprice-img {
+  padding-inline: 16px;
+
+  @media (width < 768px) {
+    width: 400px;
+  }
 }
 
 .trial-ticket-wrapper {
@@ -642,7 +666,7 @@ header {
 }
 
 .ticket-click-text {
-  font-size: 24px;
+  font-size: 1.5rem;
   margin-bottom: 4px;
   letter-spacing: 0.1em;
 }
@@ -654,6 +678,11 @@ header {
   height: 112px;
   margin: auto;
   font-family: "Noto Sans JP", cursive;
+
+  @media (width < 768px) {
+    width: 320px;
+  }
+
 }
 
 .ticket-left {
@@ -689,6 +718,18 @@ header {
     height: 40px;
     background-color: var(--color-darkbrown);   
   }
+
+  @media (width < 768px) {
+    &::before {
+      border-top: solid 40px var(--color-white);
+      border-bottom: solid 40px var(--color-white);
+    }
+
+    &::after {
+      width: 16px;
+      height: 32px;
+    }
+  }
 }
 
 .ticket-left-text-sub {
@@ -712,6 +753,13 @@ header {
   letter-spacing: 4px;
   line-height: 2em;
   text-align: left;
+
+  @media (width < 768px) {
+    padding-top: 8px;
+    padding-left: 8px;
+    font-size: 24px;
+  }
+
 }
 
 .ticket-barcode {
@@ -726,6 +774,11 @@ header {
   border-bottom: solid 4px var(--color-white);
   background-color: var(--color-darkbrown);
   box-shadow: 0 -3px var(--color-darkbrown), 0 -5px var(--color-white), 0 -7px var(--color-darkbrown), 0 -10px var(--color-white), 0 -12px var(--color-darkbrown), 0 -13px var(--color-white), 0 -16px var(--color-darkbrown), 0 -18px var(--color-white), 0 -24px var(--color-darkbrown), 0 1px var(--color-darkbrown), 0 2px var(--color-white), 0 3px var(--color-darkbrown), 0 4px var(--color-white), 0 6px var(--color-darkbrown), 0 7px var(--color-white), 0 10px var(--color-darkbrown), 0 12px var(--color-white), 0 14px var(--color-darkbrown), 0 16px var(--color-white), 0 17px var(--color-darkbrown), 0 18px var(--color-white), 0 19px var(--color-darkbrown), 0 21px var(--color-white), 0 24px var(--color-darkbrown), 0 25px var(--color-white), 0 26px var(--color-darkbrown);
+
+  @media (width < 768px) {
+    right: 24px;
+    width: 28px;
+  }
 }
 
 .ticket-arrow {
@@ -796,6 +849,18 @@ header {
     width: 64px;
     height: 40px;
     background-color: var(--color-darkbrown);
+  }
+
+  @media (width < 768px) {
+    &::before {
+      border-top: solid 40px var(--color-green);
+      border-bottom: solid 40px var(--color-green);
+    }
+
+    &::after {
+      width: 40px;
+      height: 32px;
+    }
   }
 }
 
@@ -898,6 +963,7 @@ header {
 
 .trial-info-text-inner {
   text-align: left;
+  padding-inline: 16px;
 }
 
 .trial-info-title {
@@ -935,6 +1001,10 @@ footer {
 
 .footer-main-title {
   margin-bottom: 16px;
+}
+
+.footer-main-text {
+  padding-inline: 16px;
 }
 
 .footer-price-title {
