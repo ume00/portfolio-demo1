@@ -203,6 +203,16 @@ body:not(.top) {
   }
 }
 
+.ms-section.contact {
+  .top-text-wrapper {
+    @media (width < 768px) {
+      top: unset;
+      bottom: 10%;
+      transform: translate(-50%);
+    }
+  }
+}
+
 .top-logo {
   margin-bottom: 64px;
 
