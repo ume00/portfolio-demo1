@@ -45,4 +45,35 @@ $(function() {
       $('.nav-bg').removeClass('active');
     }
   });
+
+  /* header color change */
+  var $header = $('header');
+  var $sections = $('section, footer');
+
+  function headerColorChange() {
+    var scrollTop = $(this).scrollTop();
+    var headerHeight = $header.outerHeight() / 2;
+    var changeFlg = false;
+  
+    $sections.each(function() {
+      var $section = $(this);
+      var sectionTop = $section.offset().top - headerHeight;
+      var sectionBottom = sectionTop + $section.outerHeight();
+  
+        if (scrollTop >= sectionTop && scrollTop < sectionBottom) {
+          if ($section.hasClass('hd-change')) {
+            $header.addClass('hd-white');
+            changeFlg = true;
+          } else {
+            if (!changeFlg) {
+              $header.removeClass('hd-white');
+            }
+          }
+          return false;
+        }
+      });
+    }
+    headerColorChange();
+    $(window).on('scroll', headerColorChange);
+
 });
