@@ -48,7 +48,7 @@ $(function() {
 
   /* header color change */
   var $header = $('header');
-  var $sections = $('section, footer, .c-sec-top');
+  var $sections = $('section, footer, .c-sec-top, .c-sec-inner');
 
   function headerColorChange() {
     var scrollTop = $(this).scrollTop();
