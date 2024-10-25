@@ -45,8 +45,8 @@ $(function() {
   });
 
   /* nav */
-  $('.header-inner').click(function(){
-    console.log("header");
+  $('.header-logo').click(function(){
+    console.log("header-logo");
   });
 
   $('.nav-pc').click(function(){
