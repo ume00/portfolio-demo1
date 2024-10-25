@@ -34,8 +34,8 @@ $(function() {
     });
   }
 
-  loadComponent('#header', 'components/header.html');
-  loadComponent('#footer', 'components/footer.html');
+  loadComponent('#header', './header.html');
+  loadComponent('#footer', './footer.html');
 
   /* page-common_current */
   $('.nav-item a').each(function(){
