@@ -45,15 +45,11 @@ $(function() {
   });
 
   /* nav */
-  $('.header-logo').click(function(){
+  $('header').on('click', '.header-logo', function() {
     console.log("header-logo");
   });
 
-  $('.nav-pc').click(function(){
-    console.log("nav-pc");
-  });
-
-  $('.nav-icon').click(function(){
+  $('header').on('click', '.nav-icon', function() {
       $('.nav-icon').toggleClass('active');
       $('.nav-bg').toggleClass('active');
   });
