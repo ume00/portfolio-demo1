@@ -45,6 +45,14 @@ $(function() {
   });
 
   /* nav */
+  $('.header-inner').click(function(){
+    console.log("header");
+  });
+
+  $('.nav-pc').click(function(){
+    console.log("nav-pc");
+  });
+
   $('.nav-icon').click(function(){
       $('.nav-icon').toggleClass('active');
       $('.nav-bg').toggleClass('active');
