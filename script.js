@@ -25,6 +25,18 @@ $(function() {
   $(window).on('resize', switchViewport);
   switchViewport();
 
+  /* common component loading */
+  function loadComponent(selector, file) {
+    $(selector).load(file, function(response, status, xhr) {
+      if (status === 'error') {
+        console.error(`Error loading ${file}`);
+      }
+    });
+  }
+
+  loadComponent('#header', 'components/header.html');
+  loadComponent('#footer', 'components/footer.html');
+
   /* page-common_current */
   $('.nav-item a').each(function(){
     if(this.href == location.href　|| this.href + '#' == location.href) {
