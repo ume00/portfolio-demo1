@@ -494,7 +494,7 @@ header.hd-white .c-round-button-frame,
   }
 }
 
-header {
+.header-inner {
   position: fixed;
   width: calc(100% - 16px);
   height: 80px;
