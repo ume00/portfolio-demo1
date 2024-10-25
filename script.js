@@ -30,6 +30,8 @@ $(function() {
     $(selector).load(file, function(response, status, xhr) {
       if (status === 'error') {
         console.error(`Error loading ${file}`);
+      } else if (callback) {
+        callback();
       }
     });
   }
