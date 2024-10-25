@@ -154,7 +154,7 @@ body:not(.top) {
     height: 44px;
   }
 
-  .p {
+  p {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -171,10 +171,10 @@ header.hd-white .c-round-button-frame,
   &:hover {
     color: var(--color-darkbrown);
     border-width: 24px;
-  }
 
-  @media (width < 768px) {
-    border-width: 22px;
+    @media (width < 768px) {
+      border-width: 22px;
+    }
   }
 }
 
