@@ -26,7 +26,7 @@ $(function() {
   switchViewport();
 
   /* common component loading */
-  function loadComponent(selector, file) {
+  function loadComponent(selector, file, callback) {
     $(selector).load(file, function(response, status, xhr) {
       if (status === 'error') {
         console.error(`Error loading ${file}`);
