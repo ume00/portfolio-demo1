@@ -34,18 +34,18 @@ $(function() {
     });
   }
 
-  loadComponent('#header', './header.html');
+  loadComponent('#header', './header.html', function() {
+    /* page-common_current */
+    $('.nav-item a').each(function(){
+      if(this.href == location.href　|| this.href + '#' == location.href) {
+        $(this).parents('.nav-item').addClass('current');
+      }
+    }); 
+  });
   loadComponent('#footer', './footer.html');
 
-  /* page-common_current */
-  $('.nav-item a').each(function(){
-    if(this.href == location.href　|| this.href + '#' == location.href) {
-      $(this).parents('.nav-item').addClass('current');
-    }
-  });
-
   /* nav */
-  $('.nav-icon').click(function(){
+  $('#header').on('click', '.nav-icon', function() {
       $('.nav-icon').toggleClass('active');
       $('.nav-bg').toggleClass('active');
   });
