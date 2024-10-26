@@ -11,9 +11,9 @@ $(function() {
   }
 
   /* common_viewport */
-  var $viewport = $('meta[name="viewport"]');
+  const $viewport = $('meta[name="viewport"]');
   function switchViewport() {
-    var value = $(window).outerWidth() > 360
+    const value = $(window).outerWidth() > 360
     ? 'width=device-width,initial-scale=1'
     : 'width=360';
       
@@ -45,20 +45,20 @@ $(function() {
     });
     
     /* header color change */
-    var $headerChange = $('#header');
-    var $header = $('.header-inner');
-    var $sections = $('section, footer, .c-sec-top, .c-sec-inner');
+    const $headerChange = $('#header');
+    const $header = $('.header-inner');
+    const $sections = $('section, footer, .c-sec-top, .c-sec-inner');
 
     function headerColorChange() {
-      var scrollTop = $(this).scrollTop();
-      var headerHeight = $header.outerHeight() / 2;
-      var shouldBeWhite = false;
-      var hasDefault = false;
+      let scrollTop = $(this).scrollTop();
+      let headerHeight = $header.outerHeight() / 2;
+      let shouldBeWhite = false;
+      let hasDefault = false;
   
       $sections.each(function() {
-        var $section = $(this);
-        var sectionTop = $section.offset().top - headerHeight;
-        var sectionBottom = sectionTop + $section.outerHeight();
+        let $section = $(this);
+        let sectionTop = $section.offset().top - headerHeight;
+        let sectionBottom = sectionTop + $section.outerHeight();
   
         if (scrollTop >= sectionTop && scrollTop < sectionBottom) {
           if ($section.hasClass('hd-default')) {
@@ -97,4 +97,27 @@ $(function() {
     }
   });
 
+  /* sec-title fixed */
+  const $title = $('.c-secfst-title-en');
+  const $fixedClass = $('.c-sec-top, .c-sec-inner');
+  let titleOffset = $title.offset().top;
+  let isFixed = false;
+
+  $(window).scroll(function() {
+    const scrollPosition = $(this).scrollTop() + 88;
+
+    if (scrollPosition >= titleOffset && !isFixed) {
+      $fixedClass.addClass('fixed');
+      isFixed = true;
+    } else if (scrollPosition < titleOffset && isFixed) {
+      $fixedClass.removeClass('fixed');
+      isFixed = false;
+    }
+  });
+
+  $(window).resize(function() {
+    if (!isFixed) {
+      titleOffset = $title.offset().top;
+    }
+  });
 });
