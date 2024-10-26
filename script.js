@@ -42,7 +42,44 @@ $(function() {
       if(this.href == location.href　|| this.href + '#' == location.href) {
         $(this).parents('.nav-item').addClass('current');
       }
-    }); 
+    });
+    
+    /* header color change */
+    var $headerChange = $('#header');
+    var $header = $('.header-inner');
+    var $sections = $('section, footer, .c-sec-top, .c-sec-inner');
+
+    function headerColorChange() {
+      var scrollTop = $(this).scrollTop();
+      var headerHeight = $header.outerHeight() / 2;
+      var shouldBeWhite = false;
+      var hasDefault = false;
+  
+      $sections.each(function() {
+        var $section = $(this);
+        var sectionTop = $section.offset().top - headerHeight;
+        var sectionBottom = sectionTop + $section.outerHeight();
+  
+        if (scrollTop >= sectionTop && scrollTop < sectionBottom) {
+          if ($section.hasClass('hd-default')) {
+            hasDefault = true;
+          } else if ($section.hasClass('hd-change')) {
+            shouldBeWhite = true;
+          }
+        }
+      });
+
+      if (hasDefault) {
+        $headerChange.removeClass('hd-white');
+      } else if (shouldBeWhite) {
+        $headerChange.addClass('hd-white');
+      } else {
+        $headerChange.removeClass('hd-white');
+      }
+    }
+
+    headerColorChange();
+    $(window).on('scroll', headerColorChange);
   });
   loadComponent('#footer', './footer.html');
 
@@ -59,41 +96,5 @@ $(function() {
       $('.nav-bg').removeClass('active');
     }
   });
-
-  /* header color change */
-  var $header = $('header');
-  var $sections = $('section, footer, .c-sec-top, .c-sec-inner');
-
-  function headerColorChange() {
-    var scrollTop = $(this).scrollTop();
-    var headerHeight = $header.outerHeight() / 2;
-    var shouldBeWhite = false;
-    var hasDefault = false;
-  
-    $sections.each(function() {
-      var $section = $(this);
-      var sectionTop = $section.offset().top - headerHeight;
-      var sectionBottom = sectionTop + $section.outerHeight();
-  
-      if (scrollTop >= sectionTop && scrollTop < sectionBottom) {
-        if ($section.hasClass('hd-default')) {
-          hasDefault = true;
-        } else if ($section.hasClass('hd-change')) {
-          shouldBeWhite = true;
-        }
-      }
-    });
-
-      if (hasDefault) {
-        $header.removeClass('hd-white');
-      } else if (shouldBeWhite) {
-        $header.addClass('hd-white');
-      } else {
-        $header.removeClass('hd-white');
-      }
-    }
-    
-    headerColorChange();
-    $(window).on('scroll', headerColorChange);
 
 });
