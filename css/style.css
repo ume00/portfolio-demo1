@@ -97,14 +97,14 @@ body:not(.top) {
   top: -88px;
   left: 0;
   width: 100%;
-  height: 50vh;
+  height: 250px;
   padding-top: 88px;
   padding-left: 8%;
   z-index: -1;
 
   &.fixed {
     position: fixed;
-    top: -68px;
+    top: -66px;
   }
 }
 
@@ -240,7 +240,7 @@ body:not(.top) {
   background-color: var(--color-white);
 
   &.fixed {
-    margin-top: 50vh;
+    margin-top: 250px;
   }
 }
 
