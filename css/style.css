@@ -1320,7 +1320,10 @@ header.hd-white .nav-icon span {
   color: var(--color-white);
   background-color: var(--color-yellow);
   transform: translateX(-50%);
-  
+}
+
+.price-text-wrapper {
+  text-align: center;
 }
 
 footer {
