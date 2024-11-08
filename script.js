@@ -120,4 +120,5 @@ $(function() {
       titleOffset = $title.offset().top;
     }
   });
+
 });
