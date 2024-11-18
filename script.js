@@ -1,4 +1,4 @@
-/* top_multiscroll */
+/* top multiscroll */
 $(function() {
   if ($('body').hasClass('top')) {
     $('.ms-container').multiscroll({
@@ -10,7 +10,7 @@ $(function() {
     });
   }
 
-  /* common_viewport */
+  /* common viewport */
   const $viewport = $('meta[name="viewport"]');
   function switchViewport() {
     const value = $(window).outerWidth() > 360
@@ -36,8 +36,31 @@ $(function() {
     });
   }
 
+  /* common page transition*/
+  const pageTransition = function(e) {
+    const $button = $(e.target).closest('.top-button-frame, .c-round-button-frame');
+
+    if ($button.length) {
+      e.preventDefault();
+      const href = $button.is('a') ? $button.attr('href') : $button.find('a').attr('href');
+      const timeout = $button.hasClass('c-round-button-frame') ? 5000 : 3000;
+      
+      // アニメーション完了か5秒後のどちらか早い方で遷移
+      const timeoutId = setTimeout(function() {
+        window.location.href = href;
+      }, timeout); 
+      
+      $button.one('transitionend', function() {
+        clearTimeout(timeoutId);
+        window.location.href = href;
+      });
+    }
+  };
+
+  $(document).on('click', pageTransition);
+
   loadComponent('#header', './header.html', function() {
-    /* page-common_current */
+    /* common page current */
     $('.nav-item a').each(function(){
       if(this.href == location.href　|| this.href + '#' == location.href) {
         $(this).parents('.nav-item').addClass('current');
@@ -80,6 +103,9 @@ $(function() {
 
     headerColorChange();
     $(window).on('scroll', headerColorChange);
+
+    /* common pagechange wait*/
+    $(document).on('click', pageTransition);
   });
   loadComponent('#footer', './footer.html');
 
