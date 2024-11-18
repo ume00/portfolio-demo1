@@ -841,7 +841,15 @@ header.hd-white .nav-icon span {
   .c-round-button-frame {
     margin: 32px auto 0;
   }
+}
 
+.c-sec-desc-text-wrapper {
+  padding-inline: 16px;
+  text-align: center;
+
+  p {
+    line-height: 2;
+  }
 }
 
 .trial {
@@ -1336,15 +1344,6 @@ header.hd-white .nav-icon span {
   color: var(--color-white);
   background-color: var(--color-yellow);
   transform: translateX(-50%);
-}
-
-.price-text-wrapper {
-  padding-inline: 16px;
-  text-align: center;
-
-  p {
-    line-height: 2;
-  }
 }
 
 .price-trial-wrapper {
