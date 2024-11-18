@@ -36,28 +36,31 @@ $(function() {
     });
   }
 
-  /* common page transition*/
-  const pageTransition = function(e) {
-    const $button = $(e.target).closest('.top-button-frame, .c-round-button-frame');
+  /* common page transition (Mobile Only)*/
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-    if ($button.length) {
-      e.preventDefault();
-      const href = $button.is('a') ? $button.attr('href') : $button.find('a').attr('href');
-      const timeout = $button.hasClass('c-round-button-frame') ? 5000 : 3000;
-      
-      // アニメーション完了か5秒後のどちらか早い方で遷移
-      const timeoutId = setTimeout(function() {
-        window.location.href = href;
-      }, timeout); 
-      
-      $button.one('transitionend', function() {
-        clearTimeout(timeoutId);
-        window.location.href = href;
-      });
-    }
-  };
-
-  $(document).on('click', pageTransition);
+  if (isMobile) {
+    const pageTransition = function(e) {
+      const $button = $(e.target).closest('.top-button-frame, .c-round-button-frame, .trial-ticket-wrapper');
+    
+      if ($button.length) {
+        e.preventDefault();
+        const href = $button.is('a') ? $button.attr('href') : $button.find('a').attr('href');
+        const timeout = $button.hasClass('c-round-button-frame') ? 5000 : 3000;
+        
+        // アニメーション完了か5秒後のどちらか早い方で遷移
+        const timeoutId = setTimeout(function() {
+          window.location.href = href;
+        }, timeout); 
+        
+        $button.one('transitionend', function() {
+          clearTimeout(timeoutId);
+          window.location.href = href;
+        });
+      }
+    };
+    $(document).on('click', pageTransition);
+  }
 
   loadComponent('#header', './header.html', function() {
     /* common page current */
@@ -105,7 +108,9 @@ $(function() {
     $(window).on('scroll', headerColorChange);
 
     /* common pagechange wait*/
-    $(document).on('click', pageTransition);
+    if (isMobile) {
+      $(document).on('click', pageTransition);
+    }
   });
   loadComponent('#footer', './footer.html');
 
