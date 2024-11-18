@@ -46,7 +46,7 @@ $(function() {
       if ($button.length) {
         e.preventDefault();
         const href = $button.is('a') ? $button.attr('href') : $button.find('a').attr('href');
-        $button.hasClass('c-round-button-frame') ? 5000 : $button.hasClass('trial-ticket-wrapper') ? 1000 : 3000;
+        const timeout = $button.hasClass('c-round-button-frame') ? 5000 : 2000;
         
         // アニメーション完了か5秒後のどちらか早い方で遷移
         const timeoutId = setTimeout(function() {
