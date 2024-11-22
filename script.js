@@ -152,4 +152,112 @@ $(function() {
     }
   });
 
+  /* instructor img click */
+  let topPosition = 0;
+  let leftPosition = 0;
+  let descriptionHeight = 0;
+
+  $('.instructor-img-content').on('click', function() {
+    descriptionHeight = $('.instructor-description-wrapper').height();
+    const $personWrapper = $(this).parents('.instructor-person-wrapper');
+
+    if ($personWrapper.hasClass('show')) {
+      return;
+    }
+
+    $('.instructor-person-wrapper').removeClass('show move');
+    $personWrapper.addClass('show');
+    $('.instructor-description-wrapper').addClass('description');
+
+    /* img translate */
+
+  
+    const offset = $personWrapper.offset();
+    const descriptionOffset = $('.instructor-description-wrapper.description').offset();
+  
+    topPosition = offset.top - descriptionOffset.top;
+    leftPosition = offset.left - descriptionOffset.left;
+
+    $personWrapper.css('--translateX', '0');
+    $personWrapper.addClass('move');
+
+    setTimeout(function () {
+      $personWrapper.css({
+        '--position': 'absolute',
+        '--position-top':`${topPosition}px`,
+        '--position-left': `${leftPosition}px`
+      });
+
+      $('.instructor-description-wrapper').css({
+        'height': `${descriptionHeight}px`
+      });
+
+      setTimeout(function () {
+        const leftMovePosition = window.innerWidth < 768 ? '50%' : '16px';
+        descriptionHeight = window.innerWidth < 768 ? '920px' : '560px';
+
+        requestAnimationFrame(function() {
+          $personWrapper.css({
+            '--position-top': '0px',
+            '--position-left': leftMovePosition ,
+            '--border-radius': '0',
+            '--visibility': 'hidden',
+            '--translateX' : '-50%',
+            'transition' : 'all 1s'
+          });
+
+          $('.instructor-description-wrapper').css({
+            'height': descriptionHeight
+          });
+        });
+
+        /* page scroll */   
+        const descRect = $('.instructor-description-wrapper.description')[0].getBoundingClientRect();
+        const scrollTarget = window.innerWidth < 768 
+          ? descRect.top + window.scrollY - 128 
+          : descRect.top + window.scrollY - 176;
+    
+        $('html, body').animate({
+          scrollTop: scrollTarget
+        }, 1000);
+
+        $personWrapper.find('.instructor-person-text-wrapper').addClass('text-show');
+      }, 100);
+    }, 500);
+  });
+
+  /* instructor description back */
+  $('.instructor-return').on('click', function() {
+    
+    $('.instructor-person-text-wrapper').removeClass('text-show');
+    
+    const $personWrapper = $(this).parents('.instructor-person-wrapper');
+
+    setTimeout(function () {
+      $personWrapper.css({
+        '--position': 'absolute',
+        '--position-top': `${topPosition}px`,
+        '--position-left': `${leftPosition}px`,
+        '--border-radius': '',
+        '--visibility': '',
+        '--translateX' : ''
+      });
+
+      $('.instructor-description-wrapper').css({
+        'height': ''
+      });
+
+      setTimeout(function () {
+        $personWrapper.css({
+          '--position': 'relative',
+            '--position-top': '0px',
+            '--position-left': '0px',
+            'transition' : 'none'
+        });
+        $('.instructor-description-wrapper').removeClass('description');
+        $('.instructor-person-wrapper').removeClass('show move');
+        $('.instructor-img-wrapper').removeClass('position');
+      }, 1000);
+    }, 800);
+  });
 });
