@@ -209,6 +209,10 @@ $(function() {
           $('.instructor-description-wrapper').css({
             'height': descriptionHeight
           });
+
+          $('.instructor-person-wrapper:not(.show)').css({
+            'position': 'absolute'
+          });
         });
 
         /* page scroll */   
@@ -245,6 +249,10 @@ $(function() {
 
       $('.instructor-description-wrapper').css({
         'height': ''
+      });
+
+      $('.instructor-person-wrapper:not(.show)').css({
+        'position': ''
       });
 
       setTimeout(function () {
