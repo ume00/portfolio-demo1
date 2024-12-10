@@ -1263,7 +1263,7 @@ header.hd-white .nav-icon span {
   }
 }
 
-.studio-snd-text {
+.studio-snd-title {
   @media (width < 768px) {
     line-height: 2;
   }
