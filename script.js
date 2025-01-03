@@ -10,6 +10,39 @@ $(function() {
     });
   }
 
+  /* top synchronized video playback*/
+  const $videos = $('.video');
+  const $mainVideo = $videos.eq(0);
+  
+  function syncVideos() {
+    $videos.each(function() {
+      this.currentTime = 0;
+      this.play();
+    });
+  }
+  
+  $(document).ready(syncVideos);
+  $(window).on('pageshow', syncVideos);
+  
+  $mainVideo.on('play', function() {
+    const mainVideoElement = this;
+    $videos.each(function() {
+      if (this !== mainVideoElement) {
+        this.currentTime = mainVideoElement.currentTime;
+        this.play();
+      }
+    });
+  });
+  
+  $mainVideo.on('pause', function() {
+    const mainVideoElement = this;
+    $videos.each(function() {
+      if (this !== mainVideoElement) {
+        this.pause();
+      }
+    });
+  });
+
   /* common viewport */
   const $viewport = $('meta[name="viewport"]');
   function switchViewport() {
@@ -131,26 +164,28 @@ $(function() {
   /* sec-title fixed */
   const $title = $('.c-secfst-title-en');
   const $fixedClass = $('.c-sec-top, .c-sec-inner');
-  let titleOffset = $title.offset().top;
-  let isFixed = false;
+  if ($title.length > 0) {
+    let titleOffset = $title.offset().top;
+    let isFixed = false;
 
-  $(window).scroll(function() {
-    const scrollPosition = $(this).scrollTop() + 88;
+    $(window).scroll(function() {
+      const scrollPosition = $(this).scrollTop() + 88;
 
-    if (scrollPosition >= titleOffset && !isFixed) {
-      $fixedClass.addClass('fixed');
-      isFixed = true;
-    } else if (scrollPosition < titleOffset && isFixed) {
-      $fixedClass.removeClass('fixed');
-      isFixed = false;
-    }
-  });
+      if (scrollPosition >= titleOffset && !isFixed) {
+        $fixedClass.addClass('fixed');
+        isFixed = true;
+      } else if (scrollPosition < titleOffset && isFixed) {
+        $fixedClass.removeClass('fixed');
+        isFixed = false;
+      }
+    });
 
-  $(window).resize(function() {
-    if (!isFixed) {
-      titleOffset = $title.offset().top;
-    }
-  });
+    $(window).resize(function() {
+      if (!isFixed) {
+        titleOffset = $title.offset().top;
+      }      
+    });
+  }
 
   /* instructor img click */
   let topPosition = 0;
@@ -170,8 +205,6 @@ $(function() {
     $('.instructor-description-wrapper').addClass('description');
 
     /* img translate */
-
-  
     const offset = $personWrapper.offset();
     const descriptionOffset = $('.instructor-description-wrapper.description').offset();
   
@@ -268,4 +301,89 @@ $(function() {
       }, 1000);
     }, 800);
   });
+
+  /* class pagination */
+  let currentPage = 1;
+  let maxItem = 5;
+  let itemNum = $('.class-list').length;
+  let pageNum = Math.ceil( itemNum / maxItem);
+
+  /* create　pagenation */
+  if(pageNum > 1){
+    let pageHtml = '<li  class="prev"><</li>';
+
+    for (let i = 1; i <= pageNum;  i++) {
+      pageHtml += '<li class="page-number" data-index="' + i + '">' + i + '</li>';
+    }
+
+    pageHtml += '<li class="next">></li>';
+
+    $('.pagination').html(pageHtml);
+
+    pageChange(currentPage);
+
+  } else {
+    $('.class-list').addClass('show');
+  }
+
+  /* change pagenation */
+  function pageChange(currentPage) {
+    $('.class-list').removeClass('show');
+    $('.page-number').removeClass('current');
+    $('.pagination').find('.off').removeClass('off');
+    
+    if (currentPage == 1) {
+      $('.pagination > .prev').addClass('off');
+    }
+    
+    if (currentPage == pageNum) {
+      $('.pagination > .next').addClass('off');
+    }
+
+    $('.page-number[data-index="' + currentPage + '"]').addClass('current off');
+
+    const start = maxItem * (currentPage - 1);
+    for (var i = start; i < start + maxItem; i++) {
+      $('.class-list').eq(i).addClass("show");
+    }
+  }
+
+  $('.pagination').on('click', '.page-number', function() {
+    currentPage = $(this).data('index');
+    pageChange(currentPage);
+  });
+
+  $('.pagination').on('click', '.prev', function() {
+    if (currentPage > 1) {
+      currentPage --;
+      pageChange(currentPage);
+    }
+  });
+
+  $('.pagination').on('click', '.next', function() {
+    if (currentPage < pageNum) {
+      currentPage ++;
+      pageChange(currentPage);
+    }
+  });
+
+  /* class insert date */
+  const today = new Date();
+  const dayOfWeek = today.getDay();
+    
+  const saturday = new Date(today);
+  if (dayOfWeek === 6) {
+    saturday.setDate(today.getDate() + 7);
+  } else {
+    saturday.setDate(today.getDate() + (6 - dayOfWeek));
+  }
+    
+  const days = ['日', '月', '火', '水', '木', '金', '土'];
+    
+  const formattedDate = 
+    ('0' + (saturday.getMonth() + 1)).slice(-2) + '/' + 
+    ('0' + saturday.getDate()).slice(-2) + 
+    '(' + days[saturday.getDay()] + ')';
+    
+  $('.date6').text(formattedDate);
 });
